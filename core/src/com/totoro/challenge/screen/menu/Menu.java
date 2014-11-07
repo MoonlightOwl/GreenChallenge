@@ -1,6 +1,6 @@
 package com.totoro.challenge.screen.menu;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 /**
  * Challenge.Menu
