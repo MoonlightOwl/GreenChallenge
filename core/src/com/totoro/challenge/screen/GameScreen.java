@@ -1,6 +1,7 @@
 package com.totoro.challenge.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -22,6 +23,8 @@ public class GameScreen extends ScreenAdapter {
     // assets
     private BitmapFont font_base, font_menu;
 
+    private MenuScreen menu_screen;
+
     public GameScreen(Challenge game) {
         this.game = game;
 
@@ -34,8 +37,15 @@ public class GameScreen extends ScreenAdapter {
         font_menu.setColor(Assets.YELLOWGREEN);
     }
 
-    public void update(){
+    // set
+    public void setMenuScreen(MenuScreen screen){
+        menu_screen = screen;
+    }
 
+    public void update(){
+        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+            game.setScreen(menu_screen);
+        }
     }
 
     public void draw(){
