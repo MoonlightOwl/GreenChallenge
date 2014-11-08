@@ -43,7 +43,7 @@ public class GameScreen extends ScreenAdapter {
     }
 
     public void update(){
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             game.setScreen(menu_screen);
         }
     }
