@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
@@ -38,7 +39,7 @@ public class Assets {
                 "abcdefghijklmnopqrstuvwxyz" +
                 "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
                 "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
-                "[]";
+                "[].,<>";
         manager.load("font_menu.ttf", BitmapFont.class, font_params);
         // important, this font needed for loading screen
         manager.finishLoading();
@@ -66,6 +67,7 @@ public class Assets {
         TextureParameter param = new TextureParameter();
         param.minFilter = Texture.TextureFilter.Linear;
         manager.load("textures/backshade.png", Texture.class, param);
+        manager.load("skins/uiskin.atlas", TextureAtlas.class);
 
         // particle effects
         manager.load("particles/smoke1.p", ParticleEffect.class);

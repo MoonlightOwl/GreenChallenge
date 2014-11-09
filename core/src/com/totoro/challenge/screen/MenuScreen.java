@@ -26,15 +26,16 @@ public class MenuScreen extends ScreenAdapter {
     private Challenge game;
     private OrthographicCamera cam;
 
-    //private RayHandler rayHandler;
     private Rectangle startBounds;
     private Vector3 touchPoint;
     private Menu menu;
     private int NEW_GAME = 1;
-    private int EDITOR = 2;
+    private int SETTINGS = 2;
     private int EXIT_GAME = 3;
 
+    // screens
     private GameScreen game_screen;
+    private SettingsScreen editor_screen;
 
     // assets
     private BitmapFont font_title;
@@ -47,15 +48,12 @@ public class MenuScreen extends ScreenAdapter {
         cam = new OrthographicCamera(Settings.WIDTH, Settings.HEIGHT);
         cam.position.set(Settings.WIDTH/2, Settings.HEIGHT/2, 0);
 
-        //rayHandler = new RayHandler(null);
-        //rayHandler.setShadows(false);
         startBounds = new Rectangle(0, 180, Settings.WIDTH, 40);
         touchPoint = new Vector3();
 
         // assets
         font_title = Assets.manager.get("font_title.ttf", BitmapFont.class);
         BitmapFont font_menu = Assets.manager.get("font_menu.ttf", BitmapFont.class);
-        font_menu.setColor(Assets.YELLOWGREEN);
 
         tex_back = Assets.manager.get("textures/backshade.png", Texture.class);
         tex_back.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -71,11 +69,14 @@ public class MenuScreen extends ScreenAdapter {
         menu.setColors(Assets.YELLOWGREEN, Color.WHITE);
 
         menu.add("[ Пуск ]", NEW_GAME);
-        menu.add("[ Редактор ]", EDITOR);
+        menu.add("[ Настройки ]", SETTINGS);
         menu.add("[ Выход ]", EXIT_GAME);
 
+        // screens
         game_screen = new GameScreen(game);
         game_screen.setMenuScreen(this);
+        editor_screen = new SettingsScreen(game);
+        editor_screen.setMenuScreen(this);
     }
 
     private void quit(){
@@ -88,7 +89,9 @@ public class MenuScreen extends ScreenAdapter {
 
             if(menu.check(touchPoint) == NEW_GAME) {
                 game.setScreen(game_screen);
-            } else if (menu.check(touchPoint) == EXIT_GAME){
+            } else if(menu.check(touchPoint) == SETTINGS) {
+                game.setScreen(editor_screen);
+            } else if(menu.check(touchPoint) == EXIT_GAME){
                 quit();
             }
         }
@@ -107,10 +110,10 @@ public class MenuScreen extends ScreenAdapter {
         game.batch.begin();
         smoke.draw(game.batch, delta);
         game.batch.draw(tex_back, 0, Settings.HEIGHT-240, Settings.WIDTH, 140);
-        game.batch.draw(tex_back, 100, 60, Settings.WIDTH-200, 420);
+        game.batch.draw(tex_back, 100, 60, Settings.WIDTH - 200, 420);
         font_title.drawMultiLine(game.batch, "Green Challenge",
-                Settings.WIDTH/2, Settings.HEIGHT-150, 0, BitmapFont.HAlignment.CENTER);
-        menu.draw(game.batch, Gdx.input.getX(), Settings.HEIGHT-Gdx.input.getY());
+                Settings.WIDTH / 2, Settings.HEIGHT - 150, 0, BitmapFont.HAlignment.CENTER);
+        menu.draw(game.batch, Gdx.input.getX(), Settings.HEIGHT - Gdx.input.getY());
         game.batch.end();
     }
 
@@ -122,6 +125,5 @@ public class MenuScreen extends ScreenAdapter {
 
     @Override
     public void dispose(){
-        //rayHandler.dispose();
     }
 }
