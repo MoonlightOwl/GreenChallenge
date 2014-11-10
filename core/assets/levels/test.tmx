@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="20" height="20" tilewidth="48" tileheight="48" backgroundcolor="#d6d6d6">
+ <tileset firstgid="1" name="testset" tilewidth="48" tileheight="48">
+  <image source="../textures/testset.png" width="432" height="48"/>
+ </tileset>
+ <layer name="Tiles" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowACWIgUIxYw4sDkAnYixdABMw5xcvzLjISpYR4+gO43ZixipJqH7G5qmIcNj4KRAwBz2wCI
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object name="terrain" x="-122.667" y="481.333">
+   <polygon points="118.667,21.3333 136,29.3333 170.667,36 232,37.3333 308,37.3333 316,42.6667 460,44 498.667,40 536,40 593.333,42.6667 652,46.6667 652,189.333 937.333,188 936.917,63 977.333,76 1048,106.667 1089.33,98.6667 1089.33,481.333 117.333,484"/>
+  </object>
+ </objectgroup>
+</map>

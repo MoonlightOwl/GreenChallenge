@@ -69,6 +69,8 @@ public class Assets {
         manager.load("textures/backshade.png", Texture.class, param);
         manager.load("skins/uiskin.atlas", TextureAtlas.class);
 
+        manager.load("textures/dirt1.png", Texture.class);
+
         // particle effects
         manager.load("particles/smoke1.p", ParticleEffect.class);
 
