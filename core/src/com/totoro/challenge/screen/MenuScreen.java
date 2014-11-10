@@ -26,7 +26,6 @@ public class MenuScreen extends ScreenAdapter {
     private Challenge game;
     private OrthographicCamera cam;
 
-    private Rectangle startBounds;
     private Vector3 touchPoint;
     private Menu menu;
     private int NEW_GAME = 1;
@@ -35,7 +34,7 @@ public class MenuScreen extends ScreenAdapter {
 
     // screens
     private GameScreen game_screen;
-    private SettingsScreen editor_screen;
+    private SettingsScreen settings_screen;
 
     // assets
     private BitmapFont font_title;
@@ -48,7 +47,6 @@ public class MenuScreen extends ScreenAdapter {
         cam = new OrthographicCamera(Settings.WIDTH, Settings.HEIGHT);
         cam.position.set(Settings.WIDTH/2, Settings.HEIGHT/2, 0);
 
-        startBounds = new Rectangle(0, 180, Settings.WIDTH, 40);
         touchPoint = new Vector3();
 
         // assets
@@ -75,8 +73,8 @@ public class MenuScreen extends ScreenAdapter {
         // screens
         game_screen = new GameScreen(game);
         game_screen.setMenuScreen(this);
-        editor_screen = new SettingsScreen(game);
-        editor_screen.setMenuScreen(this);
+        settings_screen = new SettingsScreen(game);
+        settings_screen.setMenuScreen(this);
     }
 
     private void quit(){
@@ -90,7 +88,7 @@ public class MenuScreen extends ScreenAdapter {
             if(menu.check(touchPoint) == NEW_GAME) {
                 game.setScreen(game_screen);
             } else if(menu.check(touchPoint) == SETTINGS) {
-                game.setScreen(editor_screen);
+                game.setScreen(settings_screen);
             } else if(menu.check(touchPoint) == EXIT_GAME){
                 quit();
             }

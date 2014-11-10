@@ -34,7 +34,6 @@ public class GameScreen extends ScreenAdapter {
         // assets
         font_base = Assets.manager.get("font_base.ttf", BitmapFont.class);
         font_menu = Assets.manager.get("font_menu.ttf", BitmapFont.class);
-        font_menu.setColor(Assets.YELLOWGREEN);
     }
 
     // set
